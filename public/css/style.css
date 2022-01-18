@@ -735,6 +735,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 5rem;
 }
 
+.pl-10 {
+  padding-left: 2.5rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pl-7 {
+  padding-left: 1.75rem;
+}
+
 .text-right {
   text-align: right;
 }
