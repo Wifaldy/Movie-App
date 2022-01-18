@@ -830,6 +830,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  .md\:pl-0 {
+    padding-left: 0px;
+  }
 }
 
 @media (min-width: 1280px) {
