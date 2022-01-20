@@ -12,17 +12,17 @@
 <body>
     <!-- NAVBAR -->
     <nav class="bg-white shadow">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex justify-between items-center space-x-5 py-2">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between md:justify-around py-2">
                 <div class="flex ">
-                    <a href="#" class="pr-5 text-blue-500">Moviefy</a>
+                    <a href="#" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
                     <div class="hidden md:flex space-x-4 pl-10">
-                        <a href="#" class="text-xs pl-7 pt-1">Country</a>
-                        <a href="#" class="text-xs pl-7 pt-1">Genre</a>
-                        <a href="#" class="text-xs pl-7 pt-1">Years</a>
-                        <a href="#" class="text-xs pl-7 pt-1">Box Office</a>
-                        <a href="#" class="text-xs pl-7 pt-1">Advertising</a>
-                        <a href="#" class="text-xs pl-7 pt-1">Drakor</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Country</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Genre</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Years</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Box Office</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Advertising</a>
+                        <a href="#" class="text-xl pl-5 pt-1">Drakor</a>
                         <div class="pl-20">
                             <input type="text" placeholder="Search" class="bg-gray-50 text-black w-max text-sm p-1 rounded border border-gray-300 focus:outline-none focus:border-indigo-500">
                         </div>
@@ -53,32 +53,51 @@
 
 
     <section>
-        <div class="max-w-4xl mx-auto mt-12">
+        <div class="max-w-5xl mx-auto mt-9">
             <!-- Card -->
-            <div class="pl-8 md:pl-0 grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-y-5">
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
-                </div>
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
-                </div>
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
-                </div>
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
-                </div>
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
-                </div>
-                <div class="bg-gray-200 w-36 h-52 md:w-32 md:h-52 sm:w-32 sm:h-52 rounded">
+            <div class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 md:gap-y-5 gap-y-10 md:gap-x-20 justify-items-center justify-center" id="movie-grid">
+                <div class="bg-gray-200 w-52 md:w-44  sm:w-40 rounded border border-solid border-gray-200 movies-card">
+                    <img src="./img/Screenshot (714).png" alt="" class="h-60">
+                    <div class="flex mt-2 mb-2 justify-between">
+                        <a href="#" class="w-24 text-xs p-1 ml-1">Avatar the Legend of Aang</a>
+                        <p class="mr-5 px-1 pt-1 bg-white border rounded-lg border-gray-300 h-9">8.9</p>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
     <script>
+        const API_KEY = "07814b1b979e89b6fe833a96a83fbae2";
+        const API = "https://api.themoviedb.org/3/movie/";
+        const IMAGES = "https://image.tmdb.org/t/p/w500/";
+
         const btn = document.getElementById("mobile-menu-button");
         const menu = document.getElementById("mobile-menu");
+        const moviesCard = document.getElementsByClassName("movies-card");
+        const movieGrid = document.getElementById('movie-grid');
+
 
         btn.addEventListener('click', () => {
             menu.classList.toggle("hidden");
-        })
+        });
+        fetch(API + "now_playing?api_key=" + API_KEY)
+            .then(response => {
+                return response.json();
+            }).then(movies => {
+                movieGrid.innerHTML = "";
+                movies.results.forEach(movie => {
+                    console.log(movie.title);
+                    const movieEl = document.createElement('div');
+                    movieEl.classList.add('bg-gray-200', 'w-52', 'md:w-44', 'sm:w-40', 'rounded', 'border', 'border-solid', 'border-gray-200', 'movies-card');
+                    movieEl.innerHTML = `<img src="${IMAGES}${movie.poster_path}" alt="" class="h-60 w-full">
+                    <div class="flex mt-2 mb-2 justify-between">
+                        <a href="#" class="w-24 text-xs p-1 ml-1">${movie.title}</a>
+                        <p class="mr-5 px-1 pt-1 bg-white border rounded-lg border-gray-300 h-9">${movie.vote_average}</p>
+                    </div>`;
+                    movieGrid.appendChild(movieEl);
+                })
+            })
+            .catch(err => console.log(err));
     </script>
 </body>
 
