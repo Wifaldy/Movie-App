@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie</title>
+    <title>Detail</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -53,52 +53,46 @@
         </div>
     </nav>
 
-
     <section class="max-w-5xl mx-auto mt-9">
-        <!-- Card -->
-        <div class="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 md:gap-y-5 gap-y-10 justify-items-center" id="movie-grid">
-            <div class="bg-gray-200 w-52 md:w-44  sm:w-40 rounded border border-solid border-gray-200 movies-card">
-                <img src="./img/Screenshot (714).png" alt="" class="h-60">
-                <div class="flex mt-2 mb-2 justify-between">
-                    <a href="#" class="w-24 text-xs p-1 ml-1">Avatar the Legend of Aang</a>
-                    <p class="mr-5 px-1 pt-1 bg-white border rounded-lg border-gray-300 h-9">8.9</p>
+        <div class="flex">
+            <div class="w-8/12">
+                <h1 class="text-2xl text-center">The Hunting (2021) WEB-DL 720p & 1080p</h1>
+                <div class="mt-10 flex bg-gray-100">
+                    <img src="./img/Screenshot (714).png" alt="" class="h-56 w-44">
+                    <div class="pl-5">
+                        <h1>Director</h1>
+                        <h1>Mark Andrew Hamer </h1>
+                        <hr class="mt-2">
+                        <h1>Director</h1>
+                        <h1>Mark Andrew Hamer </h1>
+                        <hr class="mt-2">
+                        <h1>Director</h1>
+                        <h1>Mark Andrew Hamer </h1>
+                        <hr class="mt-2">
+                        <h1>Director</h1>
+                        <h1>Mark Andrew Hamer </h1>
+                        <hr class="mt-1">
+                    </div>
                 </div>
+                <h1 class="mt-7">Synopsis & Information</h1>
+                <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur aliquid, repellat iste quod iusto facilis eos veritatis eligendi suscipit veniam error numquam porro maiores, nostrum eius recusandae unde voluptas ad!</p>
+                <h1 class="mt-5">TRAILER</h1>
+                <iframe class="w-full mt-5" height="315" src="https://www.youtube.com/embed/9YffrCViTVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="w-4/12 min-h-max">
+                <h1 class="text-center align-middle">IKLAN DISINI</h1>
             </div>
         </div>
     </section>
     <script>
-        const API_KEY = "07814b1b979e89b6fe833a96a83fbae2";
-        const API = "https://api.themoviedb.org/3/movie/";
-        const IMAGES = "https://image.tmdb.org/t/p/w500/";
-
         const btn = document.getElementById("mobile-menu-button");
         const menu = document.getElementById("mobile-menu");
-        const moviesCard = document.getElementsByClassName("movies-card");
-        const movieGrid = document.getElementById('movie-grid');
-
 
         btn.addEventListener('click', () => {
             menu.classList.toggle("hidden");
         });
-        fetch(API + "now_playing?api_key=" + API_KEY)
-            .then(response => {
-                return response.json();
-            }).then(movies => {
-                movieGrid.innerHTML = "";
-                movies.results.forEach(movie => {
-                    console.log(movie.title);
-                    const movieEl = document.createElement('div');
-                    movieEl.classList.add('bg-gray-200', 'w-52', 'md:w-44', 'sm:w-40', 'rounded', 'border', 'border-solid', 'border-gray-200', 'movies-card');
-                    movieEl.innerHTML = `<img src="${IMAGES}${movie.poster_path}" alt="" class="h-60 w-full">
-                    <div class="flex mt-2 mb-2 justify-between">
-                        <a href="#" class="w-24 text-xs p-1 ml-1">${movie.title}</a>
-                        <p class="mr-5 px-1 pt-1 bg-white border rounded-lg border-gray-300 h-9">${movie.vote_average}</p>
-                    </div>`;
-                    movieGrid.appendChild(movieEl);
-                })
-            })
-            .catch(err => console.log(err));
     </script>
+
 </body>
 
 </html>
