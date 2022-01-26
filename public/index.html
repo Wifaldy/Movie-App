@@ -18,12 +18,12 @@
                     <div class="flex ">
                         <a href="#" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
                         <div class="hidden md:flex space-x-4 pl-10">
-                            <a href="#" class="text-xl pl-5 pt-1">Country</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Genre</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Years</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Box Office</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Advertising</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Drakor</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Country</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Genre</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Years</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Box Office</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Advertising</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Drakor</a>
                             <div class="pl-20">
                                 <input type="text" placeholder="Search" class="bg-gray-50 text-black w-max text-sm p-1 rounded border border-gray-300 focus:outline-none focus:border-indigo-500">
                             </div>
@@ -54,7 +54,7 @@
     </nav>
 
 
-    <section class="max-w-5xl mx-auto mt-9">
+    <section class="max-w-5xl mx-auto my-9">
         <!-- Card -->
         <div class="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 md:gap-y-5 gap-y-10 justify-items-center" id="movie-grid">
             <div class="bg-gray-200 w-52 md:w-44  sm:w-40 rounded border border-solid border-gray-200 movies-card">
@@ -91,7 +91,7 @@
                     movieEl.classList.add('bg-gray-200', 'w-52', 'md:w-44', 'sm:w-40', 'rounded', 'border', 'border-solid', 'border-gray-200', 'movies-card');
                     movieEl.innerHTML = `<img src="${IMAGES}${movie.poster_path}" alt="" class="h-60 w-full">
                     <div class="flex mt-2 mb-2 justify-between">
-                        <a href="#" class="w-24 text-xs p-1 ml-1">${movie.title}</a>
+                        <a href="http://127.0.0.1:5500/public/detail.html?movieId=${movie.id}" class="w-24 text-xs p-1 ml-1">${movie.title}</a>
                         <p class="mr-5 px-1 pt-1 bg-white border rounded-lg border-gray-300 h-9">${movie.vote_average}</p>
                     </div>`;
                     movieGrid.appendChild(movieEl);
