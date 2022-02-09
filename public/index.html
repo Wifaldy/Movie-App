@@ -16,7 +16,7 @@
             <div class="max-w-6xl mx-auto ">
                 <div class="flex justify-between md:justify-around py-2">
                     <div class="flex ">
-                        <a href="#" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
+                        <a href="http://127.0.0.1:5500/public/index.html" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
                         <div class="hidden md:flex space-x-4 pl-10">
                             <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Country</a>
                             <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Genre</a>
@@ -66,6 +66,15 @@
             </div>
         </div>
     </section>
+    <section class="max-w-5xl mx-auto my-9">
+        <div class="flex text-center justify-center">
+            <a href="#" class="mx-2 border border-black rounded px-1" id="previousPage">1</a>
+            <a href="#" class="mx-2 border border-black rounded px-1" id="currentPage">1</a>
+            <a href="#" class="mx-2 border border-black rounded px-1" id="nextPage">1</a>
+            <a href="#" class="mx-2 border border-black rounded px-1" id="lastPage">1</a>
+
+        </div>
+    </section>
     <script>
         const API_KEY = "07814b1b979e89b6fe833a96a83fbae2";
         const API = "https://api.themoviedb.org/3/movie/";
@@ -76,6 +85,15 @@
         const moviesCard = document.getElementsByClassName("movies-card");
         const movieGrid = document.getElementById('movie-grid');
 
+        // Pagination
+        const previousPage = document.getElementById('previousPage');
+        const currentPage = document.getElementById('currentPage');
+        const nextPage = document.getElementById('nextPage');
+        const lastPage = document.getElementById('lastPage');
+
+        const URL = window.location.href;
+        let page = URL.split('page=')[1] || 1;
+        console.log(page);
 
         btn.addEventListener('click', () => {
             menu.classList.toggle("hidden");
@@ -86,7 +104,6 @@
             }).then(movies => {
                 movieGrid.innerHTML = "";
                 movies.results.forEach(movie => {
-                    console.log(movie.title);
                     const movieEl = document.createElement('div');
                     movieEl.classList.add('bg-gray-200', 'w-52', 'md:w-44', 'sm:w-40', 'rounded', 'border', 'border-solid', 'border-gray-200', 'movies-card');
                     movieEl.innerHTML = `<img src="${IMAGES}${movie.poster_path}" alt="" class="h-60 w-full">

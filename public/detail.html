@@ -16,14 +16,14 @@
             <div class="max-w-6xl mx-auto ">
                 <div class="flex justify-between md:justify-around py-2">
                     <div class="flex ">
-                        <a href="#" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
+                        <a href="http://127.0.0.1:5500/public/index.html" class="pl-10 md:pl-0 text-blue-500 text-xl">Moviefy</a>
                         <div class="hidden md:flex space-x-4 pl-10">
-                            <a href="#" class="text-xl pl-5 pt-1">Country</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Genre</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Years</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Box Office</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Advertising</a>
-                            <a href="#" class="text-xl pl-5 pt-1">Drakor</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Country</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Genre</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Years</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Box Office</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Advertising</a>
+                            <a href="#" class="text-xl ml-5  px-2 hover:bg-gray-400 rounded">Drakor</a>
                             <div class="pl-20">
                                 <input type="text" placeholder="Search" class="bg-gray-50 text-black w-max text-sm p-1 rounded border border-gray-300 focus:outline-none focus:border-indigo-500">
                             </div>
@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-    <section class="max-w-5xl mx-auto mt-9">
+    <section class="max-w-5xl mx-auto mt-9" id="movie-information">
         <div class="flex">
             <div class="w-8/12">
                 <h1 class="text-2xl text-center" id="title">The Hunting (2021) WEB-DL 720p & 1080p</h1>
@@ -61,16 +61,16 @@
                     <img src="" alt="" class="h-60 w-44" id="image">
                     <div class="pl-5 pt-1">
                         <h1>Release Date</h1>
-                        <h1 id="release-date">Mark Andrew Hamer </h1>
+                        <h1 id="release-date"> </h1>
                         <hr class="mt-2">
                         <h1>Status</h1>
-                        <h1 id="status">Mark Andrew Hamer </h1>
+                        <h1 id="status"> </h1>
                         <hr class="mt-2">
                         <h1>Rating</h1>
-                        <h1 id="rating">Mark Andrew Hamer </h1>
+                        <h1 id="rating"> </h1>
                         <hr class="mt-2">
                         <h1>Genre</h1>
-                        <h1 id="genre">Mark Andrew Hamer </h1>
+                        <h1 id="genre"> </h1>
                         <hr class="mt-1">
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 <p class="mt-4" id="overview">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur aliquid, repellat iste quod iusto facilis eos veritatis eligendi suscipit veniam error numquam porro maiores, nostrum eius recusandae unde voluptas ad!</p>
             </div>
             <div class="w-4/12 min-h-max">
-                <h1 class="ml-3 h-full pt-52 bg-gray-50 text-center">IKLAN DISINI</h1>
+                <img src="./../src/img/Movie.svg" alt="Movie Time" class="ml-5 mt-32">
             </div>
         </div>
     </section>
@@ -90,9 +90,12 @@
         const btn = document.getElementById("mobile-menu-button");
         const menu = document.getElementById("mobile-menu");
         const URL = window.location.href;
-        let movieId = URL.split("?");
-        movieId = movieId[1].split("=");
-        movieId = movieId[1];
+        const movieInformation = document.getElementById("movie-information");
+        let movieId = URL.split("movieId=")[1];
+        console.log(movieId);
+        if (!movieId || movieId == 1) {
+            movieInformation.innerHTML = '<h1 class="text-5xl text-center">Movie Not Found </h1>';
+        }
 
         const title = document.getElementById("title");
         const image = document.getElementById("image");
